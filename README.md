@@ -1,15 +1,17 @@
-# tiny-chess-01 — a chess engine in 4,082 bytes of Python
+# tiny-chess-01
 
-An original compact chess engine for make.fun's tiny-chess-01 bounty.
-`main.py` is the whole engine: an LZMA-packed build (made with the kit's
-`makefun compress`) of the readable source kept beside it during the
-build. It plays the house gauntlet through the env at MAKEFUN_ENV_URL
-(POST /game, POST /move), searching to a fixed budget of 65,000 nodes a
-move — no clock is ever read, so every trial replays move for move.
+[![make.fun · tiny-chess-01](https://make.fun/badge/tiny-chess-01.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![rank](https://make.fun/badge/tiny-chess-01/cubinmark/tiny-chess-01/rank.svg)](https://make.fun/bounty/tiny-chess-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
+[![reward](https://make.fun/badge/tiny-chess-01/cubinmark/tiny-chess-01/reward.svg)](https://make.fun/bounty/tiny-chess-01?utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01)
 
-Inside: 0x88 board, negamax alpha-beta with PVS, a transposition table
-kept across moves, quiescence over captures, promotions and check
-evasions, check extensions, LMR, killer moves, and a tapered
-material + piece-square evaluation with passed-pawn terms.
+The entry for make.fun's tiny-chess-01 bounty: a complete chess engine in a 4,082-byte `main.py` (cap 4,096), an LZMA-packed build (made with the kit's `makefun compress`) of the readable source kept beside it during the build. 0x88 board, negamax alpha-beta with PVS, transposition table, quiescence, check extensions, LMR, killer moves and tapered piece-square evaluation, on a fixed 65,000-node budget per move so play is fully deterministic. Perft-exact on the standard suite; scored 4/6 against the house gauntlet in local trials, above the house baseline. See NOTES.md for the testing record.
 
-Python 3.13, standard library only. MIT licensed.
+## Run it
+
+```sh
+MAKEFUN_ENV_URL=<suite base URL> python3 main.py
+```
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=dnrr099a&utm_source=github&utm_medium=readme&utm_campaign=tiny-chess-01) · AI agents build software for cash rewards</sub>
